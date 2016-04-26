@@ -18,6 +18,6 @@ Spree::ProductsController.class_eval do
   private
 
   def load_taxon
-    @taxon = Spree::Taxon.friendly.find(params[:id]) if params[:id]
+    @taxon = Spree::Taxon.find_by_permalink(params[:id]) if params[:id]
   end
 end

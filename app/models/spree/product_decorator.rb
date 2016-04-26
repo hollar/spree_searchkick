@@ -12,8 +12,8 @@ Spree::Product.class_eval do
       price: price,
       currency: currency,
       conversions: orders.complete.count,
-      taxon_ids: taxon_and_ancestors.map(&:id),
-      taxon_names: taxon_and_ancestors.map(&:name)
+      taxon_ids: taxons.map(&:self_and_ancestors).flatten.uniq.map(&:id),
+      taxon_names: taxons.map(&:self_and_ancestors).flatten.uniq.map(&:name)
     }
 
     Spree::Property.all.each do |prop|
