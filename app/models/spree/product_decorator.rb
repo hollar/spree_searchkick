@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  searchkick autocomplete: [:name]
+  searchkick autocomplete: [:name], callbacks: :async
 
   def search_data
     json = {
