@@ -5,7 +5,7 @@ RSpec.describe Spree::Property, type: :model do
     let(:property) { create(:property, name: 'awesome_property') }
 
     it 'respond with property name downcased' do
-      expect(property.filter_name).to eq('awesome_property')
+      expect(property.filter_name).to eq('property_awesome_property')
     end
   end
 end

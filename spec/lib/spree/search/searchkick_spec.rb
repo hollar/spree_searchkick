@@ -34,8 +34,8 @@ describe Spree::Search::Searchkick do
           products = Spree::Search::Searchkick.new({}).retrieve_products
 
           expect(products.count).to eq 1
-          expect(products.aggs["category_ids"]).to include("doc_count" => 1)
-          expect(products.aggs["category_ids"]["buckets"]).to be_a Array
+          expect(products.aggs["taxonomy_category_ids"]).to include("doc_count" => 1)
+          expect(products.aggs["taxonomy_category_ids"]["buckets"]).to be_a Array
         end
       end
     end
