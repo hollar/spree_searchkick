@@ -1,12 +1,21 @@
 module Spree::Search
   class Searchkick < Spree::Core::Search::Base
+    attr_writer :searchkick_options
+
+    def initialize(params = {})
+      @searchkick_options = {}
+      super
+    end
+
     def retrieve_products
       @products = get_base_elasticsearch
     end
 
     def get_base_elasticsearch
       curr_page = page || 1
-      Spree::Product.search(keyword_query, where: where_query, aggs: aggregations, smart_aggs: true, order: sorted, page: curr_page, per_page: per_page)
+      opts = @searchkick_options.merge(where: where_query, aggs: aggregations, smart_aggs: true,
+                                       order: sorted, page: curr_page, per_page: per_page)
+      Spree::Product.search(keyword_query, opts)
     end
 
     def where_query
