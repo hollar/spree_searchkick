@@ -1,6 +1,7 @@
 module Spree::Search
   class Searchkick < Spree::Core::Search::Base
-    def retrieve_products
+    def retrieve_products(order_params = {})
+      @order_params = order_params
       @products = get_base_elasticsearch
     end
 
@@ -24,9 +25,9 @@ module Spree::Search
     end
 
     def sorted
-      order_params = {}
-      order_params[:conversions] = :desc if conversions
-      order_params
+      @order_params ||= {}
+      @order_params[:conversions] = :desc if conversions
+      @order_params
     end
 
     def aggregations
