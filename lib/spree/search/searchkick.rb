@@ -4,11 +4,11 @@ module Spree::Search
 
     def initialize(params = {})
       @searchkick_options = {}
+      @order_params = params[:order_params]
       super
     end
 
     def retrieve_products
-      @order_params = order_params
       @products = get_base_elasticsearch
     end
 
