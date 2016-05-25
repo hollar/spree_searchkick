@@ -14,8 +14,8 @@ module Spree::Search
 
     def get_base_elasticsearch
       curr_page = page || 1
-      opts = @searchkick_options.merge(where: where_query, aggs: aggregations, smart_aggs: true,
-                                       order: sorted, page: curr_page, per_page: per_page)
+      opts = @searchkick_options.deep_merge(where: where_query, aggs: aggregations, smart_aggs: true,
+                                            order: sorted, page: curr_page, per_page: per_page)
       Spree::Product.search(keyword_query, opts)
     end
 
