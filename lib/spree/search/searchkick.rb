@@ -25,7 +25,7 @@ module Spree::Search
     def where_query
       where_query = {
         active: true,
-        currency: current_currency,
+        currency: current_currency.downcase, # currency is lowercase to avoid ES's all-uppercase tokenization
         price: {not: nil}
       }
       where_query.merge!({taxon_ids: taxon.id}) if taxon

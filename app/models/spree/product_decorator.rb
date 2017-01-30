@@ -10,7 +10,7 @@ Spree::Product.class_eval do
       created_at: created_at,
       updated_at: updated_at,
       price: price,
-      currency: currency,
+      currency: currency.downcase, # avoid ES's all-uppercase tokenization
       conversions: orders.complete.count,
       taxon_ids: taxons.map(&:self_and_ancestors).flatten.uniq.map(&:id),
       taxon_names: taxons.map(&:self_and_ancestors).flatten.uniq.map(&:name)
