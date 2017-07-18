@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'solidus_core'
-  s.add_dependency 'searchkick', '>= 1.2'
+  s.add_dependency 'searchkick', '>= 2.3.1'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'
