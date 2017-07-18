@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  searchkick searchable: [:name], callbacks: :async
+  searchkick searchable: [:name], word_start: [:name], callbacks: :async
 
   def search_data
     json = {
@@ -33,9 +33,30 @@ Spree::Product.class_eval do
 
   def self.autocomplete(keywords)
     if keywords
-      Spree::Product.search(keywords, autocomplete: true, limit: 10).map(&:name).map(&:strip).uniq
+      Spree::Product.search(
+        keywords,
+        fields: [:name],
+        match: :word_start,
+        limit: 10,
+        load: false,
+        misspellings: {below: 3},
+        where: search_where
+      ).map(&:name).map(&:strip).uniq
     else
-      Spree::Product.search('*').map(&:name).map(&:strip)
+      Spree::Product.search(
+        '*',
+        fields: [:name],
+        load: false,
+        misspellings: {below: 3},
+        where: search_where
+      ).map(&:name).map(&:strip)
     end
   end
-end
+
+  def self.search_where
+    {
+      active: true,
+      price: { not: nil }
+    }
+  end
+ end
