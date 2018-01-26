@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  searchkick autocomplete: [:name], callbacks: :async
+  searchkick autocomplete: [:name], callbacks: :async, settings: { "index.mapping.total_fields.limit": 5000 }
 
   def search_data
     json = {
