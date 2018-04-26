@@ -18,7 +18,7 @@ Spree::Product.class_eval do
     }
 
     Spree::Property.all.each do |prop|
-      json.merge!(Hash[prop.filter_name, property(prop.name)])
+      json.merge!(Hash[prop.filter_name, property(prop.name) || ""])
     end
 
     Spree::Taxonomy.all.each do |taxonomy|
