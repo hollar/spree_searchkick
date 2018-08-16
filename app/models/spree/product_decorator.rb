@@ -1,5 +1,6 @@
 Spree::Product.class_eval do
-  searchkick searchable: [:name], word_start: [:name], callbacks: :async,
+  searchkick searchable: [:name, :categories_names, :meta_keywords, :description, :meta_description],
+             word_start: [:name], callbacks: :async,
              settings: { "index.mapping.total_fields.limit": 5000 }, _type: "Spree::Product"
 
   def search_data
