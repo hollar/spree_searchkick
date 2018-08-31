@@ -1,7 +1,17 @@
 Spree::Product.class_eval do
   searchkick searchable: [:name, :categories_names, :meta_keywords, :description, :meta_description],
              word_start: [:name, :categories_names, :meta_keywords, :description, :meta_description],
-             callbacks: :async, settings: { "index.mapping.total_fields.limit": 5000 }, _type: "Spree::Product"
+             _type: 'Spree::Product',
+             settings: {
+               index: {
+                 max_result_window: 32_000,
+                 mapping: {
+                   total_fields: {
+                     limit: 5000
+                   }
+                 }
+               }
+             }
 
   def search_data
     json = {
@@ -61,4 +71,4 @@ Spree::Product.class_eval do
       price: { not: nil }
     }
   end
- end
+end
