@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = SpreeSearchkick::VERSION
   s.summary     = 'Add searchkick to spree'
   s.description = 'Filters, suggests, autocompletes, sortings, searches'
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.5.0'
 
   s.author    = 'Gonzalo Moreno'
   s.email     = 'gmoreno@acid.cl'
@@ -21,12 +21,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_core'
   s.add_dependency 'searchkick', '>= 2.3.1'
 
-  s.add_development_dependency 'capybara', '~> 2.4'
+  s.add_development_dependency 'capybara', '>= 3.12.0'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_girl', '~> 4.5'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails',  '~> 3.1'
+  s.add_development_dependency 'rspec-rails',  '~> 2.13'
   s.add_development_dependency 'sass-rails', '~> 5.0.0.beta1'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
