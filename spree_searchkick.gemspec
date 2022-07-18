@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'solidus_core', '~>3.1.5'
+  s.add_dependency 'solidus_core', '~>2.11.17'
   s.add_dependency 'searchkick', '>= 2.3.1'
 
   s.add_development_dependency 'capybara', '~> 3.37.1'
