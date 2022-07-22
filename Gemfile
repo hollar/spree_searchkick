@@ -5,6 +5,6 @@ gem 'solidus', '1.2.2'
 gem 'solidus_auth_devise'
 
 # Provides searchkick functionalities for testing
-gem 'searchkick', '~> 2.0'
+gem 'searchkick', '>= 2.0'
 
 gemspec
